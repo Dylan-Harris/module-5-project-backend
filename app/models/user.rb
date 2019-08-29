@@ -15,5 +15,7 @@ class User < ApplicationRecord
     has_many :inverse_friends, :through => :inverse_relationships, :source => :user
     has_many :reviews
     # has_many :reviews, through: :games
-
+    # def write_review
+    #     @review = Review.create(user_id: self.id, game_id: game.id, content: '')
+    # end
 end

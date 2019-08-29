@@ -1,9 +1,17 @@
 class Api::V1::UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    # skip_before_action :authorized, only: [:create, :index]
 
     def profile
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
+
+  def index
+    @user = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
  
   def create
     @user = User.create(user_params)
@@ -12,6 +20,20 @@ class Api::V1::UsersController < ApplicationController
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
       render json: { error: 'failed to create user' }, status: :not_acceptable
+    end
+  end
+
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.valid?
+      render json: { user: @user }, status: :accepted
+    else
+      render json: { error: 'Failed to edit profile' }, status: :not_acceptable
     end
   end
  
