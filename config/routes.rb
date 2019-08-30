@@ -4,12 +4,15 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :update]
       resources :reviews, only: [:create, :destroy]
       resources :wishlists, only: [:create, :destroy]
+      resources :forums, only: [:create, :show]
+      resources :comments, only: [:create, :show]
+      resources :relationships, only: [:create, :destroy]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       get '/users', to: 'users#index'
       # post '/review', to: 'reviews#create'
       # delete '/review', to: 'reviews#destroy'
-      post '/wishlist', to: 'wishlists#create'
+      # post '/wishlist', to: 'wishlists#create'
       # delete '/wishlist', to: 'wishlists#destroy'
     end
   end

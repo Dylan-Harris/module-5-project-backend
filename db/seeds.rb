@@ -29,21 +29,21 @@ rinda = User.create(
 
 )
 
-gears = Game.create(
-    title: "Gears of War",
-    background_image: "Image",
-    genre: "Horror, action, shooter",
-    trailer: "Video",
-    parent_platform: "Xbox 360, PC"
-)
+# gears = Game.create(
+#     title: "Gears of War",
+#     background_image: "Image",
+#     genre: "Horror, action, shooter",
+#     trailer: "Video",
+#     parent_platform: "Xbox 360, PC"
+# )
 
-dkc = Game.create(
-    title: "Doney Kong Country",
-    background_image: "Image",
-    genre: "Platformer",
-    trailer: "Video",
-    parent_platform: "Super Nintendo"
-)
+# dkc = Game.create(
+#     title: "Doney Kong Country",
+#     background_image: "Image",
+#     genre: "Platformer",
+#     trailer: "Video",
+#     parent_platform: "Super Nintendo"
+# )
 
 Relationship.create(
     user_id: dylan.id, 
