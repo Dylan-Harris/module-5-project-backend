@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'rest-client'
 User.destroy_all
 Game.destroy_all
 Forum.destroy_all
@@ -12,6 +13,48 @@ Review.destroy_all
 Wishlist.destroy_all
 Comment.destroy_all
 Relationship.destroy_all
+
+game_api = RestClient.get 'https://rawg.io/api/games'
+game_array = JSON.parse(game_api)["results"]
+game_array.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: game["clip"]["clip"],
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+game_api2 = RestClient.get 'https://rawg.io/api/games?page=2'
+game_array_2 = JSON.parse(game_api2)["results"]
+game_array_2.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: game["clip"]["clip"],
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+game_api3 = RestClient.get 'https://rawg.io/api/games?page=3'
+game_array_3 = JSON.parse(game_api3)["results"]
+game_array_3.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: game["clip"]["clip"],
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+
+
 
 dylan = User.create(
     username: "WestCaliLvin",
@@ -55,31 +98,31 @@ Relationship.create(
     friend_id: dylan.id
 )
 
-Review.create(
-    content: "This game was fun!",
-    user_id: dylan.id,
-    game_id: gears.id
-)
+# Review.create(
+#     content: "This game was fun!",
+#     user_id: dylan.id,
+#     game_id: gears.id
+# )
 
-Review.create(
-    content: "This is a classic",
-    user_id: rinda.id,
-    game_id: dkc.id
-)
+# Review.create(
+#     content: "This is a classic",
+#     user_id: rinda.id,
+#     game_id: dkc.id
+# )
 
-Wishlist.create(
-    user_id: dylan.id,
-    game_id: gears.id 
-)
+# Wishlist.create(
+#     user_id: dylan.id,
+#     game_id: gears.id 
+# )
 
-guilty = Forum.new(
-    title: "Is Guilty Gear a good game?",
-    user_id: dylan.id
-)
+# guilty = Forum.new(
+#     title: "Is Guilty Gear a good game?",
+#     user_id: dylan.id
+# )
 
-Comment.new(
-    content: "I think the game is fun.",
-    forum_id: guilty.id,
-    user_id: dylan.id
-)
+# Comment.new(
+#     content: "I think the game is fun.",
+#     forum_id: guilty.id,
+#     user_id: dylan.id
+# )
 
