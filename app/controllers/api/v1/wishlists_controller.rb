@@ -1,5 +1,5 @@
 class Api::V1::WishlistsController < ApplicationController
-    # skip_before_action :authorized, only: [:create, :destroy]
+    before_action :authorized, only: [:create, :destroy]
 
     def create
         @wishlist = Wishlist.create(wishlist_params)

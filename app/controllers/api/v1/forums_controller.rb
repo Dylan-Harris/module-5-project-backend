@@ -1,5 +1,5 @@
 class Api::V1::ForumsController < ApplicationController
-    skip_before_action :authorized, only: [:create, :destroy]
+    before_action :authorized, only: [:create, :destroy]
     
     def index
         @forum = Forum.all

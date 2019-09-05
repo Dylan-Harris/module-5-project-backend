@@ -42,16 +42,142 @@ end
 
 game_api3 = RestClient.get 'https://rawg.io/api/games?page=3'
 game_array_3 = JSON.parse(game_api3)["results"]
+def trailer(game)
+    return game['clip'] && game['clip']['clip'] && "nothin "
+ end
 game_array_3.each do |game|
     Game.create(
         title: game["name"],
         description: game["description"],
         background_image: game["background_image"],
         genre: game["genres"][0]["name"],
-        trailer: game["clip"]["clip"],
+        trailer: trailer(game),
         parent_platform: game["parent_platforms"][0]["platform"]["name"] 
     )
 end
+
+game_api4 = RestClient.get 'https://rawg.io/api/games?page=4'
+game_array_4 = JSON.parse(game_api4)["results"]
+def trailer(game)
+   return game['clip'] && game['clip']['clip'] && "nothin "
+end
+
+game_array_4.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: trailer(game),
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+
+game_api5 = RestClient.get 'https://rawg.io/api/games?page=5'
+game_array_5 = JSON.parse(game_api5)["results"]
+def trailer(game)
+   return game['clip'] && game['clip']['clip'] && "nothin "
+end
+
+game_array_5.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: trailer(game),
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+game_api6 = RestClient.get 'https://rawg.io/api/games?page=6'
+game_array_6 = JSON.parse(game_api6)["results"]
+def trailer(game)
+   return game['clip'] && game['clip']['clip'] && "nothin "
+end
+
+game_array_6.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: trailer(game),
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+game_api7 = RestClient.get 'https://rawg.io/api/games?page=7'
+game_array_7 = JSON.parse(game_api7)["results"]
+def trailer(game)
+   return game['clip'] && game['clip']['clip'] && "nothin "
+end
+
+game_array_7.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: trailer(game),
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+game_api8 = RestClient.get 'https://rawg.io/api/games?page=8'
+game_array_8 = JSON.parse(game_api8)["results"]
+def trailer(game)
+   return game['clip'] && game['clip']['clip'] && "nothin "
+end
+
+game_array_8.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: trailer(game),
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+game_api9 = RestClient.get 'https://rawg.io/api/games?page=9'
+game_array_9 = JSON.parse(game_api9)["results"]
+def trailer(game)
+   return game['clip'] && game['clip']['clip'] && "nothin "
+end
+
+game_array_9.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: trailer(game),
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+game_api10 = RestClient.get 'https://rawg.io/api/games?page=10'
+game_array_10 = JSON.parse(game_api10)["results"]
+def trailer(game)
+   return game['clip'] && game['clip']['clip'] && "nothin "
+end
+
+game_array_10.each do |game|
+    Game.create(
+        title: game["name"],
+        description: game["description"],
+        background_image: game["background_image"],
+        genre: game["genres"][0]["name"],
+        trailer: trailer(game),
+        parent_platform: game["parent_platforms"][0]["platform"]["name"] 
+    )
+end
+
+
+
 
 
 
@@ -115,10 +241,10 @@ Relationship.create(
 #     game_id: gears.id 
 # )
 
-# guilty = Forum.new(
-#     title: "Is Guilty Gear a good game?",
-#     user_id: dylan.id
-# )
+guilty = Forum.new(
+    title: "Is Guilty Gear a good game?",
+    user_id: dylan.id
+)
 
 # Comment.new(
 #     content: "I think the game is fun.",

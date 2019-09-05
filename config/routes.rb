@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'static#index'
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :update, :index]
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       get '/users', to: 'users#index'
+      get '/games', to: 'games#index'
       # post '/review', to: 'reviews#create'
       # delete '/review', to: 'reviews#destroy'
       # post '/wishlist', to: 'wishlists#create'
