@@ -1,4 +1,4 @@
 class Forum < ApplicationRecord
-belongs_to :user
-has_many :comments, through: :users
+has_many :users, through: :comments
+has_many :comments
 end

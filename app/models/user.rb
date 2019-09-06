@@ -6,8 +6,8 @@ class User < ApplicationRecord
     
     has_many :wishlist
     has_many :games, through: :wishlist
-    has_many :forums
     has_many :comments
+    has_many :forums, through: :comments
     has_many :relationships
     has_many :friends, through: :relationships, class_name: 'User'
     has_many :inverse_relationships, :class_name => "Relationship", :foreign_key => "friend_id"

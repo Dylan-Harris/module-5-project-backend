@@ -1,6 +1,10 @@
 class Api::V1::RelationshipsController < ApplicationController
     before_action :authorized, only: [:create, :destroy]
 
+    def index
+        render json: { users: Relationship.all }
+      end
+
     def create 
         x = current_user.friends.include?(friend_id: params[:friend_id])
         if x == false

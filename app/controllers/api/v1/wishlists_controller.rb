@@ -1,5 +1,9 @@
 class Api::V1::WishlistsController < ApplicationController
-    before_action :authorized, only: [:create, :destroy]
+    before_action :authorized, only: [:create, :destroy, :update]
+
+    def index
+        render json: { wishlist: Wishlist.all }
+    end
 
     def create
         @wishlist = Wishlist.create(wishlist_params)
@@ -9,6 +13,20 @@ class Api::V1::WishlistsController < ApplicationController
             render json: { error: "Failed to create Wishlist" }, status: :not_acceptable
         end
     end
+
+    def edit
+        @wishlist = User.find(wishlist.id)
+      end
+    
+      def update
+        @wishlist = Wishlist.find(params[:id])
+        @wishlist.update(wishlist_params)
+        if @wishlist.valid?
+          render json: { wishlist: @wishlist }, status: :accepted
+        else
+          render json: { error: 'Failed to add game' }, status: :not_acceptable
+        end
+      end
 
     def destroy
         @wishlist = Wishlist.find_by(id: params[:id])
