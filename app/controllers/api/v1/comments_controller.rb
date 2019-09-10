@@ -1,12 +1,12 @@
 class Api::V1::CommentsController < ApplicationController
-     before_action :authorized, only: [:create]
+     skip_before_action :authorized, only: [:create, :index, :show]
 
-     def index 
-        @comments = Comment.all
-     end
-
+     def index
+      render json: Comment.all
+    end
      def show
-        @comment = Comment.find(params[:id])
+      @comment = Comment.find(params[:id])
+      render json: @comment.to_json(:include => :users)
      end
 
      def create

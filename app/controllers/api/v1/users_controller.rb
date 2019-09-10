@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
   def index
-    render json: { users: User.all }
+    render json: User.all
   end
 
   def show

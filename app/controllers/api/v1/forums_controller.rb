@@ -2,11 +2,13 @@ class Api::V1::ForumsController < ApplicationController
     before_action :authorized, only: [:create, :destroy]
     
     def index
-        render json: { forums: Forum.all }
+        @forums = Forum.all
+            render json: @forums.to_json(:include => {:comments => {:include => :user}})
     end
 
     def show
         @forum = Forum.find(params[:id])
+            render json: @forum.to_json(:include => {:comments => {:include => :user}})
     end
 
     def create
