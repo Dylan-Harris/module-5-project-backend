@@ -6,11 +6,13 @@ class Api::V1::UsersController < ApplicationController
     end
 
   def index
-    render json: User.all
+    @users = User.all
+            render json: @users.to_json(:include => {:wishlist => {:include => :games}})
   end
 
   def show
-    @user = User.find(params[:id])
+    @User = User.find(params[:id])
+      render json: @user.to_json(:include => {:wishlist => {:include => :games}})
   end
  
   def create
