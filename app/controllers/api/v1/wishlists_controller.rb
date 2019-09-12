@@ -2,7 +2,8 @@ class Api::V1::WishlistsController < ApplicationController
     before_action :authorized, only: [:create, :destroy, :update]
 
     def index
-        render json: { wishlist: Wishlist.all }
+        @wishlist = Wishlist.all
+          render json: @wishlist.to_json(:include => :game)
     end
 
     def create

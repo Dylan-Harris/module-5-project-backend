@@ -4,8 +4,8 @@ class User < ApplicationRecord
     
     
     
-    has_many :wishlist
-    has_many :games, through: :wishlist
+    has_many :wishlists
+    has_many :games, through: :wishlists
     has_many :comments
     has_many :forums, through: :comments
     has_many :relationships
@@ -18,4 +18,8 @@ class User < ApplicationRecord
     # def write_review
     #     @review = Review.create(user_id: self.id, game_id: game.id, content: '')
     # end
+
+    def game_info
+        self.wishlists.first
+    end
 end
